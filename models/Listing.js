@@ -1,3 +1,4 @@
+const mongoose = require("mongoose");
 const listingSchema = new mongoose.Schema({
   nftId: {
     type: mongoose.Schema.Types.ObjectId,

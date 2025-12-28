@@ -1,10 +1,16 @@
 // controllers/nftController.js
 const NFT = require("../models/NFT");
 const Transaction = require("../models/Transaction");
-const { uploadToIPFS, uploadJSONToIPFS } = require("../config/ipfs");
+const { initializeIpfs } = require("../config/ipfs");
 const blockchainService = require("../services/blockchainService");
 const searchService = require("../services/searchService");
 const { clearCache } = require("../middleware/cache");
+
+async function uploadJSONToIPFS(data) {
+  const ipfs = await initializeIpfs();
+  const { cid } = await ipfs.add(JSON.stringify(data));
+  return { url: `https://ipfs.io/ipfs/${cid.toString()}` };
+}
 
 exports.createNFT = async (req, res, next) => {
   try {

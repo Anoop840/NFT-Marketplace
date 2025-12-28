@@ -1,3 +1,4 @@
+const mongoose = require("mongoose");
 const nftSchema = new mongoose.Schema({
   tokenId: {
     type: String,

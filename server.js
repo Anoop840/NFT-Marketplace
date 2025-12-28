@@ -29,7 +29,7 @@ connectDB().then(() => {
   console.log("Database connected");
 });
 
-connectRedis();
+// connectRedis();
 
 // Security middleware
 app.use(helmet());
